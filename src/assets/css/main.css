@@ -26,3 +26,13 @@ body {
 .sidebar {
   min-height: 100vh;
 }
+.router-view{
+  min-height: 100vh;
+  min-width: 100vh;
+}
+
+/* @font-face {
+  font-family: "ArgentPixelCF";
+  src: local("ArgentPixelCF"),
+   url(./fonts/Argent_Pixel_CF/Webfont/ArgentPixelCF-Italic.woff) format("truetype");
+} */

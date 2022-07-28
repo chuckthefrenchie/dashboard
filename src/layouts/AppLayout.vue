@@ -1,14 +1,13 @@
 <template>
   <div class="d-flex app-container">
-    <Sidebar />
-        <div class="main-content">
+    <div class="main-content">
       <router-view class="router-view" />
     </div>
+    <Sidebar />
   </div>
 </template>
 
 <script>
-// import Sidebar from "@/components/partials/Sidebar";
 // import { bus } from "@/main";
 import Sidebar from "../components/partials/Sidebar.vue";
 
@@ -19,17 +18,8 @@ export default {
   data() {
     return {
       isLoggedIn: false,
-    //   changeWidth: false
     };
-  },
-  created() {
-    // this.isLoggedIn = this.$route.name != "login";
-  },
-//   watch: {
-//     "$route.name": function(routeName) {
-//       this.isLoggedIn = routeName != "login";
-//     },
-//   },
+  }
 };
 </script>
 
@@ -37,13 +27,11 @@ export default {
 .app-container {
 height: 100% !important;
 width: 100% !important;
-// border: 1px solid red;
 }
 
 .main-content {
   height: 100%;
-//   width: calc(100% - 80px);
-//   margin-left: 80px;
+  width: 100%;
   overflow: hidden;
 }
 

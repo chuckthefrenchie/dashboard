@@ -1,23 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import HomeView from '../views/HomeView.vue'
 import AppLayout from '../layouts/AppLayout.vue';
+import ParksProjectLayoutLayout from '../layouts/ParksProjectLayoutLayout.vue';
+import AboutLayout from '../layouts/AboutLayout.vue';
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: AppLayout
+      path: "/",
+      component: AppLayout,
+      children: [
+        {
+          path: "parks-project",
+          component: ParksProjectLayoutLayout,
+        },
+        {
+          path: "/about",
+          component: AboutLayout,
+        },
+        {
+          path: '*',
+          redirect: '/about'
+        }
+      ],
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
   ]
 })
 

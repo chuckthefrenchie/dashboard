@@ -9,34 +9,23 @@
     >
       <!-- Navigation -->
       <div class="d-flex sidebarTabs">
-        <a class="d-flex navbar-brand mb-4" @click="navToExplore">
-          <span>
-            <img
-              src="@/assets/icons/default-icon.svg"
-              style="height: 38px; width: 48px"
-              class="navbar-brand-img mx-auto"
-              alt="..."
-            />
-          </span>
-        </a>
+
         <ul class="d-flex navbar-nav">
           <li class="d-flex nav-item">
+            <router-link class="nav-link highlight-color" to="/parks-project">
             <div class="icon-container">
-              <img src="@/assets/icons/default-icon.svg" />
+              <img src="@/assets/icons/tree-sticker.svg" />
+            </div>
+            <span>Parks projects</span>
+            </router-link>
+          </li>
+          <li class="d-flex nav-item">
+            <router-link class="nav-link highlight-color" to="/about">
+            <div class="icon-container">
+              <img src="@/assets/icons/wave.svg" />
             </div>
             <span>About</span>
-          </li>
-          <li class="d-flex nav-item">
-            <div class="icon-container">
-              <img src="@/assets/icons/default-icon.svg" />
-            </div>
-            <span>Charts</span>
-          </li>
-          <li class="d-flex nav-item">
-            <div class="icon-container">
-              <img src="@/assets/icons/default-icon.svg" />
-            </div>
-            <span>Map</span>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -61,14 +50,24 @@ export default {
       this.isHovered = false;
     },
     navToExplore() {
-      console.log("nav clicked");
+      this.$router.push({ path: 'about' });
+    // this.emitter.emit("testing-new-emitter");
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.navbar-brand {
+.sidebar {
+    // border-left: 0.3px solid #E8E8E8;
+    position: static;
+    z-index: 10;
+}
+.nav-item {
+    height: 42px;
+    margin-bottom: 10px;
+}
+.navbar-brand, .nav-item {
   cursor: pointer;
 }
 
@@ -77,7 +76,7 @@ export default {
   margin-left: 12px;
 }
 .navbar-nav {
-  margin-top: 20em;
+  margin-top: 24em;
 }
 
 //LightBox
@@ -86,11 +85,12 @@ export default {
   width: 100%;
   height: 100%;
   top: 0;
-  left: 180px !important;
+//   left: 180px !important;
+  right: 180px !important;
   background-color: #1f2d3d;
   opacity: 0.5;
   display: block;
-  z-index: 100000;
+  z-index: 20;
 }
 .nav-item {
   flex-direction: row !important;
@@ -105,7 +105,8 @@ export default {
     background-color: #fcfcfc;
   }
   .nav-item {
-    height: 40px;
+    // height: 40px;
+    margin-left: 6px;
     span {
       display: none;
     }
@@ -115,14 +116,21 @@ export default {
 .sidebarOpened {
   width: 180px !important;
   border-right: none !important;
-
+ .navbar-brand{
+    margin-left: 60px;
+ }
   .nav-item {
-    width: 150px;
+    width: 180px;
+    img {
+    // display: none;
+    }
     span {
       display: flex;
     }
   }
   .nav-link {
+    display: flex;
+    flex-direction: row;
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
