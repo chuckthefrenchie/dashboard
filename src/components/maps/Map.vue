@@ -35,16 +35,6 @@ export default {
       map.on("style.load", () => {
         map.setFog({});
       });
-      //adding markers
-      // // Create a default Marker and add it to the map.
-      // const markerPortland = new mapboxgl.Marker()
-      // .setLngLat([-122.674195, 45.520247])
-      // .addTo(map);
-
-      // // Create a default Marker, colored black
-      // const markerLosAngeles = new mapboxgl.Marker({ color: 'black' })
-      // .setLngLat([-118.243683, 34.052235])
-      // .addTo(map);
 
       map.on("click", (event) => {
         const features = map.queryRenderedFeatures(event.point, {
@@ -60,9 +50,6 @@ export default {
           .setHTML(`<h3>${feature.properties.title}</h3>`)
           .addTo(map);
 
-        console.log("marker was clicked on", feature.properties.title);
-
-        // let pinDetails = feature.geometry.coordinates;
         this.emitter.emit("pinDetailsOpened", feature);
       });
     },

@@ -7,31 +7,15 @@
       </div>
 
       <div class="d-flex leftPanel-cards">
-        <!--pass temp, humidity and presusre numbers to teh card HERE -->
-        <small-card type="Tempature"></small-card>
-
-        <small-card type="Humidity" caption="Humidity"></small-card>
-
-        <small-card type="Pressure" caption="Pressure"></small-card>
+        <small-card type="Temperature"></small-card>
+        <small-card type="Humidity"></small-card>
+        <small-card type="Pressure"></small-card>
       </div>
 
-     <!-- create a reusable compoennt to insert each chart
-       <div class="d-flex leftPanel-bigCard"> 
-        add Weather component slot in here 
-      </div>
-
-      <div class="d-flex leftPanel-bigCard">
-      </div>
-
-      <div class="d-flex leftPanel-bigCard">
-      </div>  -->
-
-      <big-card type="Temperature" readings="Temperature"></big-card>
-
-        <big-card type="Humidity" readings="Humidity"></big-card>
-
-        <big-card type="Pressure" readingds="Pressure"></big-card>
-
+      <big-card type="Temperature"></big-card>
+      <big-card type="Humidity"></big-card>
+      <big-card type="Pressure"></big-card>
+      
     </div>
 
     <div class="d-flex rightPanel">
@@ -39,12 +23,9 @@
     </div>
 
     <div class="d-flex weather-container">
-    <Weather />
+      <Weather />
     </div>
 
-    <!-- <div class="d-flex charts-container">
-    <Charts />
-    </div> -->
   </div>
 </template>
 
@@ -55,37 +36,35 @@ import Charts from "../components/partials/Charts.vue";
 import SmallCard from "../components/partials/SmallCard.vue";
 import BigCard from "../components/partials/BigCard.vue";
 
-
 export default {
   components: {
     Map,
     Weather,
     Charts,
     SmallCard,
-    BigCard
+    BigCard,
   },
   data() {
     return {
-      selectedParkName: "", 
+      selectedParkName: "",
       selectedParkTemperature: "test",
       selectedParkHumidity: "test",
-      selectedParkPressure: "test"
+      selectedParkPressure: "test",
     };
   },
   computed: {
-
-  selectedParkName(){
-    if(this.selectedParkName !== ""){
-      return this.selectedParkName;
-    }else {
-      return "Please select a park from the map";
-    }
-  }
+    selectedParkName() {
+      if (this.selectedParkName !== "") {
+        return this.selectedParkName;
+      } else {
+        return "Please select a park from the map";
+      }
+    },
   },
   mounted() {
     this.emitter.on("pinDetailsOpened", (feature) => {
       this.selectedParkName = feature.properties.title;
-     });
+    });
   },
   methods: {},
   watch: {},
@@ -126,13 +105,6 @@ export default {
   margin-top: 12px;
 }
 
-// .leftPanel-bigCard {
-//   border: 0.5px solid #e8e8e8;
-//   height: 218px;
-//   width: 676px;
-//   margin-top: 24px;
-//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-// }
 .rightPanel {
   width: 50%;
   flex-direction: column;

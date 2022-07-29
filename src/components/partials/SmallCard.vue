@@ -5,23 +5,29 @@
     </div>
     
     <div class="d-flex smallCardCaption">
-        <!-- <p> {{ caption }}</p> -->
-        <p> {{ selectedParkTempToday}} </p>
+<p v-if="type === 'Temperature'"> {{ selectedParkTempToday }}</p>
+<p v-if="type === 'Humidity'"> {{ selectedParkHumidityToday }}</p>
+<p v-if="type === 'Pressure'"> {{ selectedParkPressureToday }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-props: ['type', 'caption'],
+props: ['type'],
   data() {
     return {
-      selectedParkTempToday: ""
+      selectedParkTempToday: "",
+      selectedParkHumidityToday: "",
+      selectedParkPressureToday: ""
     };
   },
   mounted(){
     this.emitter.on("tempRightNow", (temp) => {
     this.selectedParkTempToday = temp.feels_like;
+    this.selectedParkHumidityToday = temp.humidity;
+    this.selectedParkPressureToday = temp.pressure;
+
   });
   }
 };

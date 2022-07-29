@@ -1,28 +1,5 @@
 <template>
   <div class="d-flex weatherComponent">
-    <!-- <h5>Weather Today:</h5>
-
-    <p>Temperature: {{ pinWeatherTempToday }}</p>
-    <p>Humidity: {{ pinWeatheHumidityToday }}</p>
-    <p>Pressure: {{ pinWeatherPressureToday }}</p>
-
-    <span></span>
-
-    <h5>Weather Tomorrow:</h5>
-
-    <p>Temperature: {{ pinWeatherTempTmrw }}</p>
-    <p>Humidity: {{ pinWeatheHumidityTmrw }}</p>
-    <p>Pressure: {{ pinWeatherPressureTmrw }}</p>
-
-    <span></span>
-
-    <h5>Weather Day After Tomorrow:</h5>
-
-    <p>Temperature: {{ pinWeatherTempAfterTmrw }}</p>
-    <p>Humidity: {{ pinWeatheHumidityAfterTmrw }}</p>
-    <p>Pressure: {{ pinWeatherPressureAfterTmrw }}</p>
-
-    <span></span> -->
   </div>
 </template>
 
@@ -61,11 +38,6 @@ export default {
       this.pinLat = feature.geometry.coordinates[1];
       this.initWeather();
     });
-  },
-  computed: {
-    //   tempFeelsLike() {
-    //       return this.testWeatherData.main.feels_like ;
-    //   }
   },
   methods: {
     async initWeather() {

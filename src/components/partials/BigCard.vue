@@ -5,18 +5,35 @@
     <p> {{ type }}</p>
     </div>
     
-    <div class="d-flex bigCardCaption">
-        <p> {{ readings }}</p>
+    <div class="d-flex bigCardChart" v-if="type === 'Temperature'">
+       <Charts />
+    </div>
+    <div class="d-flex bigCardChart" v-if="type === 'Humidity'">
+       <Charts2 />
+    </div>
+        <div class="d-flex bigCardChart" v-if="type === 'Pressure'">
+       <Charts3 />
     </div>
   </div>
 </template>
 
 <script>
+import Charts from "../partials/Charts.vue";
+import Charts2 from "../partials/Charts2.vue";
+import Charts3 from "../partials/Charts3.vue";
+
+
+
 export default {
-props: ['type', 'readings'],
+props: ['type'],
   data() {
     return {
     };
+  },
+    components: {
+    Charts,
+    Charts2,
+    Charts3
   },
 };
 </script>
