@@ -13,6 +13,10 @@ const router = createRouter({
       component: AppLayout,
       children: [
         {
+          path: "/",
+          component: AboutLayout,
+        },
+        {
           path: "parks-project",
           component: ParksProjectLayoutLayout,
         },

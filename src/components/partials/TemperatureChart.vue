@@ -1,7 +1,7 @@
 <template>
-    <div>
-     <canvas id="temperatureChart" width="680" height="180"></canvas> 
-    </div>
+  <div>
+    <canvas id="temperatureChart" width="680" height="180"></canvas>
+  </div>
 </template>
 
 <script>
@@ -11,35 +11,31 @@ export default {
   components: {},
   data() {
     return {
-      tempData: []
+      temperatureStats: null,
     };
   },
   mounted() {
-  this.emitter.on("forecast", (forecast) => {
-
-let one = forecast.data.list[0].main.feels_like;
-// let three = forecast.data.list[2].main.feels_like;
-// let five = forecast.data.list[4].main.feels_like;
-// let seven = forecast.data.list[6].main.feels_like;
-// let nine = forecast.data.list[8].main.feels_like;
-// let ten = forecast.data.list[9].main.feels_like;
-
-// this.tempData.push(one, three, five, seven, nine, ten);
-// this.tempData.push(one, three, five, seven, nine, ten);
-this.tempData.push(one);
-
-console.log("DATA HERE", this.tempData)
-
-  });
-
-    this.initCharts();
+     this.emitter.on("forecast", (forecast) => {
+      let one = forecast.data.list[0].main.feels_like;
+      let three = forecast.data.list[2].main.feels_like;
+      let five = forecast.data.list[4].main.feels_like;
+      let seven = forecast.data.list[6].main.feels_like;
+      let nine = forecast.data.list[8].main.feels_like;
+      let ten = forecast.data.list[9].main.feels_like;
+      const arr = [one, three, five, seven, nine, ten];
+      console.log("TEMPERATURE", arr);
+      this.temperatureStats = arr;
+      const stats = this.temperatureStats;
+      this.initCharts(stats);
+    });
+    if (this.temperatureStats) {
+      const stats = this.temperatureStats;
+      this.initCharts(stats);
+    }
   },
   methods: {
-    initCharts() {
+    initCharts(stats) {
       const ctx = document.getElementById("temperatureChart");
-
-      let temperature = this.tempData;
-
       const myChart1 = new Chart(ctx, {
         type: "line",
         data: {
@@ -54,8 +50,7 @@ console.log("DATA HERE", this.tempData)
           datasets: [
             {
               label: "Temperature: ",
-              data: [this.temperature, 28, 25, 19, 27, 32],
-              data: temperature,
+              data: stats,
               borderColor: "#F93E60",
               borderWidth: 1,
             },

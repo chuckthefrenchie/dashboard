@@ -1,7 +1,7 @@
 <template>
-    <div>
-     <canvas id="pressureChart" width="680" height="180"></canvas> 
-    </div>
+  <div>
+    <canvas id="pressureChart" width="680" height="180"></canvas>
+  </div>
 </template>
 
 <script>
@@ -10,13 +10,31 @@ import Chart from "chart.js/auto";
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      pressureStats: null,
+    };
   },
   mounted() {
-    this.initCharts();
+    this.emitter.on("forecast", (forecast) => {
+      let one = forecast.data.list[0].main.pressure;
+      let three = forecast.data.list[2].main.pressure;
+      let five = forecast.data.list[4].main.pressure;
+      let seven = forecast.data.list[6].main.pressure;
+      let nine = forecast.data.list[8].main.pressure;
+      let ten = forecast.data.list[9].main.pressure;
+      const arr = [one, three, five, seven, nine, ten];
+      console.log("PRESSURE", arr);
+      this.pressureStats = arr;
+      const stats = this.pressureStats;
+      this.initCharts(stats);
+    });
+    if (this.pressureStats) {
+      const stats = this.pressureStats;
+      this.initCharts(stats);
+    }
   },
   methods: {
-    initCharts() {
+    initCharts(stats) {
       const ctx = document.getElementById("pressureChart");
 
       const myChart2 = new Chart(ctx, {
@@ -33,8 +51,8 @@ export default {
           datasets: [
             {
               label: "Pressure: ",
-              data: [1035, 1019, 1015, 999, 1010, 1045], //add pressure stats here
-            borderColor: "#60A54F",
+              data: stats,
+              borderColor: "#60A54F",
               borderWidth: 1,
             },
           ],

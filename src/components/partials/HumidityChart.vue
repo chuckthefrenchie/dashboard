@@ -1,7 +1,7 @@
 <template>
-    <div>
-     <canvas id="humidityChart" width="680" height="180"></canvas> 
-    </div>
+  <div>
+    <canvas id="humidityChart" width="680" height="180"></canvas>
+  </div>
 </template>
 
 <script>
@@ -10,13 +10,31 @@ import Chart from "chart.js/auto";
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      humidityStats: null,
+    };
   },
   mounted() {
-    this.initCharts();
+    this.emitter.on("forecast", (forecast) => {
+      let one = forecast.data.list[0].main.humidity;
+      let three = forecast.data.list[2].main.humidity;
+      let five = forecast.data.list[4].main.humidity;
+      let seven = forecast.data.list[6].main.humidity;
+      let nine = forecast.data.list[8].main.humidity;
+      let ten = forecast.data.list[9].main.humidity;
+      const arr = [one, three, five, seven, nine, ten];
+      console.log("HUMIDITY", arr);
+      this.humidityStats = arr;
+      const stats = this.humidityStats;
+      this.initCharts(stats);
+    });
+    if (this.humidityStats) {
+      const stats = this.humidityStats;
+      this.initCharts(stats);
+    }
   },
   methods: {
-    initCharts() {
+    initCharts(stats) {
       const ctx = document.getElementById("humidityChart");
 
       const myChart3 = new Chart(ctx, {
@@ -33,8 +51,8 @@ export default {
           datasets: [
             {
               label: "Humidity: ",
-              data: [60, 73, 65, 71, 57, 75], //add humidity stats here
-         borderColor: 'rgb(75, 192, 192)',
+              data: stats,
+              borderColor: "rgb(75, 192, 192)",
               borderWidth: 1,
             },
           ],
