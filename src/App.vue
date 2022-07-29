@@ -6,21 +6,14 @@
 
 <script>
 export default {
-  name: "App",  
+  name: "App",
 };
 </script>
 
 <style>
-/* @font-face {
-  font-family: "ArgentPixelCF";
-  src: local("ArgentPixelCF"),
-   url(./fonts/Argent_Pixel_CF/Webfont/ArgentPixelCF-Italic.woff) format("truetype");
-} */
-
-/* @font-face {
-  font-family: "ArgentPixelCF";
-  src: local("ArgentPixelCF"),
-   url(./fonts/Argent_Pixel_CF/OTF/ArgentPixelCF-Italic.otf) format("truetype");
-} */
-
+@font-face {
+  font-family: "Silkscreen";
+  src: local("Silkscreen"),
+    url(./fonts/Silkscreen/Webfont/slkscr.ttf) format("font-truetype");
+}
 </style>

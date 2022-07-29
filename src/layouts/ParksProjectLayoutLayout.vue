@@ -15,7 +15,6 @@
       <big-card type="Temperature"></big-card>
       <big-card type="Humidity"></big-card>
       <big-card type="Pressure"></big-card>
-      
     </div>
 
     <div class="d-flex rightPanel">
@@ -25,14 +24,12 @@
     <div class="d-flex weather-container">
       <Weather />
     </div>
-
   </div>
 </template>
 
 <script>
 import Map from "../components/maps/Map.vue";
 import Weather from "../components/partials/Weather.vue";
-import Charts from "../components/partials/Charts.vue";
 import SmallCard from "../components/partials/SmallCard.vue";
 import BigCard from "../components/partials/BigCard.vue";
 
@@ -40,7 +37,7 @@ export default {
   components: {
     Map,
     Weather,
-    Charts,
+    // Charts,
     SmallCard,
     BigCard,
   },
@@ -57,7 +54,7 @@ export default {
       if (this.selectedParkName !== "") {
         return this.selectedParkName;
       } else {
-        return "Please select a park from the map";
+        return "Please select a park from the map...";
       }
     },
   },
@@ -98,6 +95,7 @@ export default {
   p {
     font-size: 26px;
     margin-top: 12px;
+    margin-left: 10px;
   }
 }
 

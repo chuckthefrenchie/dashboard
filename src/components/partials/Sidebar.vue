@@ -9,22 +9,21 @@
     >
       <!-- Navigation -->
       <div class="d-flex sidebarTabs">
-
         <ul class="d-flex navbar-nav">
           <li class="d-flex nav-item">
             <router-link class="nav-link highlight-color" to="/parks-project">
-            <div class="icon-container">
-              <img src="@/assets/icons/tree-sticker.svg" />
-            </div>
-            <span>Parks projects</span>
+              <div class="icon-container">
+                <img src="@/assets/icons/tree-sticker.svg" />
+              </div>
+              <span>Parks projects</span>
             </router-link>
           </li>
           <li class="d-flex nav-item">
             <router-link class="nav-link highlight-color" to="/about">
-            <div class="icon-container">
-              <img src="@/assets/icons/wave.svg" />
-            </div>
-            <span>About</span>
+              <div class="icon-container">
+                <img src="@/assets/icons/wave.svg" />
+              </div>
+              <span>About</span>
             </router-link>
           </li>
         </ul>
@@ -50,8 +49,7 @@ export default {
       this.isHovered = false;
     },
     navToExplore() {
-      this.$router.push({ path: 'about' });
-    // this.emitter.emit("testing-new-emitter");
+      this.$router.push({ path: "about" });
     },
   },
 };
@@ -59,15 +57,15 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar {
-    // border-left: 0.3px solid #E8E8E8;
-    position: static;
-    z-index: 10;
+  position: static;
+  z-index: 10;
 }
 .nav-item {
-    height: 42px;
-    margin-bottom: 10px;
+  height: 42px;
+  margin-bottom: 10px;
 }
-.navbar-brand, .nav-item {
+.navbar-brand,
+.nav-item {
   cursor: pointer;
 }
 
@@ -85,7 +83,6 @@ export default {
   width: 100%;
   height: 100%;
   top: 0;
-//   left: 180px !important;
   right: 180px !important;
   background-color: #1f2d3d;
   opacity: 0.5;
@@ -105,7 +102,6 @@ export default {
     background-color: #fcfcfc;
   }
   .nav-item {
-    // height: 40px;
     margin-left: 6px;
     span {
       display: none;
@@ -116,14 +112,14 @@ export default {
 .sidebarOpened {
   width: 180px !important;
   border-right: none !important;
- .navbar-brand{
+  position: relative;
+  z-index: 10;
+
+  .navbar-brand {
     margin-left: 60px;
- }
+  }
   .nav-item {
     width: 180px;
-    img {
-    // display: none;
-    }
     span {
       display: flex;
     }

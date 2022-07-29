@@ -1,6 +1,6 @@
 <template>
     <div>
-     <canvas id="chart3" width="680" height="180"></canvas> 
+     <canvas id="humidityChart" width="680" height="180"></canvas> 
     </div>
 </template>
 
@@ -17,9 +17,9 @@ export default {
   },
   methods: {
     initCharts() {
-      const ctx = document.getElementById("chart3");
+      const ctx = document.getElementById("humidityChart");
 
-      const myChart = new Chart(ctx, {
+      const myChart3 = new Chart(ctx, {
         type: "line",
         data: {
           labels: [
@@ -32,9 +32,9 @@ export default {
           ],
           datasets: [
             {
-              label: "Pressure: ",
-              data: [30, 28, 25, 19, 27, 32], //add temparature here
-            borderColor: "#60A54F",
+              label: "Humidity: ",
+              data: [60, 73, 65, 71, 57, 75], //add humidity stats here
+         borderColor: 'rgb(75, 192, 192)',
               borderWidth: 1,
             },
           ],
@@ -47,7 +47,7 @@ export default {
           },
         },
       });
-      myChart;
+      myChart3;
     },
   },
 };

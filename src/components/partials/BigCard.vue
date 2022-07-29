@@ -6,21 +6,21 @@
     </div>
     
     <div class="d-flex bigCardChart" v-if="type === 'Temperature'">
-       <Charts />
+       <TemperatureChart />
     </div>
     <div class="d-flex bigCardChart" v-if="type === 'Humidity'">
-       <Charts2 />
+       <HumidityChart />
     </div>
         <div class="d-flex bigCardChart" v-if="type === 'Pressure'">
-       <Charts3 />
+       <PressureChart />
     </div>
   </div>
 </template>
 
 <script>
-import Charts from "../partials/Charts.vue";
-import Charts2 from "../partials/Charts2.vue";
-import Charts3 from "../partials/Charts3.vue";
+import TemperatureChart from "../partials/TemperatureChart.vue";
+import HumidityChart from "./HumidityChart.vue";
+import PressureChart from "./PressureChart.vue";
 
 
 
@@ -31,9 +31,9 @@ props: ['type'],
     };
   },
     components: {
-    Charts,
-    Charts2,
-    Charts3
+    TemperatureChart,
+    HumidityChart,
+    PressureChart
   },
 };
 </script>

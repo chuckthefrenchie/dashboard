@@ -8,7 +8,6 @@
 </template>
 
 <script>
-// import { bus } from "@/main";
 import Sidebar from "../components/partials/Sidebar.vue";
 
 export default {

@@ -1,6 +1,6 @@
 <template>
     <div>
-     <canvas id="chart2" width="680" height="180"></canvas> 
+     <canvas id="pressureChart" width="680" height="180"></canvas> 
     </div>
 </template>
 
@@ -8,7 +8,6 @@
 import Chart from "chart.js/auto";
 
 export default {
-  // props: ['type'],
   components: {},
   data() {
     return {};
@@ -18,9 +17,9 @@ export default {
   },
   methods: {
     initCharts() {
-      const ctx = document.getElementById("chart2");
+      const ctx = document.getElementById("pressureChart");
 
-      const myChart = new Chart(ctx, {
+      const myChart2 = new Chart(ctx, {
         type: "line",
         data: {
           labels: [
@@ -33,9 +32,9 @@ export default {
           ],
           datasets: [
             {
-              label: "Humidity: ",
-              data: [30, 28, 25, 19, 27, 32], //add temparature here
-         borderColor: 'rgb(75, 192, 192)',
+              label: "Pressure: ",
+              data: [1035, 1019, 1015, 999, 1010, 1045], //add pressure stats here
+            borderColor: "#60A54F",
               borderWidth: 1,
             },
           ],
@@ -48,7 +47,7 @@ export default {
           },
         },
       });
-      myChart;
+      myChart2;
     },
   },
 };

@@ -1,18 +1,13 @@
 <template>
   <div class="d-flex mapComponent">
     <div id="map" style="width: 880px; height: 80.5em"></div>
-
     <!-- <basemaps></basemaps> -->
   </div>
 </template>
 
 <script>
-// import Basemaps from "@/components/partials/Basemaps.vue";
-
 export default {
-  components: {
-    // Basemaps
-  },
+  components: {},
   data() {
     return {
       map: null,

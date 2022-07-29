@@ -1,11 +1,8 @@
-/*  @import '~bootstrap/scss/bootstrap.min.css';
-@import './common.css'; */
-
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
 body {
     min-height: 100vh;
     color: var(--color-text);
-    /* ackground: var(--color-background); */
     transition: color 0.5s, background-color 0.5s;
     line-height: 1.6;
     font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -31,8 +28,9 @@ body {
   min-width: 100vh;
 }
 
-/* @font-face {
-  font-family: "ArgentPixelCF";
-  src: local("ArgentPixelCF"),
-   url(./fonts/Argent_Pixel_CF/Webfont/ArgentPixelCF-Italic.woff) format("truetype");
-} */
+@font-face {
+  font-family: "ArgentPixelCF-Italic";
+  src: local("ArgentPixelCF-Italic"),
+   url(./assets/fonts/ArgentPixelCF/Webfont/ArgentPixelCF-Italic.woff) format('font-opentype'),
+
+}
