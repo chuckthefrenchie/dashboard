@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex weatherComponent">
-    <h5>Weather Today:</h5>
+    <!-- <h5>Weather Today:</h5>
 
     <p>Temperature: {{ pinWeatherTempToday }}</p>
     <p>Humidity: {{ pinWeatheHumidityToday }}</p>
@@ -22,7 +22,7 @@
     <p>Humidity: {{ pinWeatheHumidityAfterTmrw }}</p>
     <p>Pressure: {{ pinWeatherPressureAfterTmrw }}</p>
 
-    <span></span>
+    <span></span> -->
   </div>
 </template>
 
@@ -55,10 +55,10 @@ export default {
   mounted() {
     this.initWeather();
 
-    this.emitter.on("pinDetailsOpened", (pinDetails) => {
-      console.log("PIN DETAILS", pinDetails[0]);
-      this.pinLng = pinDetails[0];
-      this.pinLat = pinDetails[1];
+    this.emitter.on("pinDetailsOpened", (feature) => {
+      console.log("PIN DETAILS", feature.geometry.coordinates[0]);
+      this.pinLng = feature.geometry.coordinates[0];
+      this.pinLat = feature.geometry.coordinates[1];
       this.initWeather();
     });
   },
@@ -87,26 +87,46 @@ export default {
       //   console.error(error);
       // });
 
-      // const response  = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=a98082f9fd259683143a78b781c9bd7c`);
+      const response1  = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=a98082f9fd259683143a78b781c9bd7c`);
 
-      const response = await axios.get(
+      const response2 = await axios.get(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&cnt=10&appid=a98082f9fd259683143a78b781c9bd7c`
       );
 
-      if (response) {
-        this.pinWeatherTempToday = response.data.list[0].main.feels_like;
-        this.pinWeatheHumidityToday = response.data.list[0].main.humidity;
-        this.pinWeatherPressureToday = response.data.list[0].main.pressure;
 
-        this.pinWeatherTempTmrw = response.data.list[5].main.feels_like;
-        this.pinWeatheHumidityTmrw = response.data.list[5].main.humidity;
-        this.pinWeatherPressureTmrw = response.data.list[5].main.pressure;
+      if (response1) {
+        // this.pinWeatherTempToday = response.data.list[0].main.feels_like;
+        // this.pinWeatheHumidityToday = response.data.list[0].main.humidity;
+        // this.pinWeatherPressureToday = response.data.list[0].main.pressure;
 
-        this.pinWeatherTempAfterTmrw = response.data.list[9].main.feels_like;
-        this.pinWeatheHumidityAfterTmrw = response.data.list[9].main.humidity;
-        this.pinWeatherPressureAfterTmrw = response.data.list[9].main.pressure;
+        // this.pinWeatherTempTmrw = response.data.list[5].main.feels_like;
+        // this.pinWeatheHumidityTmrw = response.data.list[5].main.humidity;
+        // this.pinWeatherPressureTmrw = response.data.list[5].main.pressure;
 
-        console.log("RESPONSE: ", response);
+        // this.pinWeatherTempAfterTmrw = response.data.list[9].main.feels_like;
+        // this.pinWeatheHumidityAfterTmrw = response.data.list[9].main.humidity;
+        // this.pinWeatherPressureAfterTmrw = response.data.list[9].main.pressure;
+
+        console.log("WEATHER RESPONSE today: ", response1.data.main);
+        this.emitter.emit("tempRightNow", response1.data.main);
+
+      }
+
+
+      if (response2) {
+        // this.pinWeatherTempToday = response.data.list[0].main.feels_like;
+        // this.pinWeatheHumidityToday = response.data.list[0].main.humidity;
+        // this.pinWeatherPressureToday = response.data.list[0].main.pressure;
+
+        // this.pinWeatherTempTmrw = response.data.list[5].main.feels_like;
+        // this.pinWeatheHumidityTmrw = response.data.list[5].main.humidity;
+        // this.pinWeatherPressureTmrw = response.data.list[5].main.pressure;
+
+        // this.pinWeatherTempAfterTmrw = response.data.list[9].main.feels_like;
+        // this.pinWeatheHumidityAfterTmrw = response.data.list[9].main.humidity;
+        // this.pinWeatherPressureAfterTmrw = response.data.list[9].main.pressure;
+
+        console.log("WEATHER RESPONSE forecast: ", response2.data);
       }
     },
   },

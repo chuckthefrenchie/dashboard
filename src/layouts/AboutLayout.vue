@@ -80,6 +80,7 @@ height: 970px;
 border: 1px solid #E8E8E8;
 display: flex;
 box-shadow: 3px #E8E8E8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
 .daria-gh{
     display: flex;
     height: 100%;
@@ -105,12 +106,13 @@ margin: 24px 24px 24px 12px;
 height: 970px;
 // display: block !important;
 // box-shadow: 5px black !important;
-
 .rightPanel-content{
 border: 1px solid #E8E8E8;
 height: 100% !important;
 flex-direction: column !important;
 margin-top: 26px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+
 }
 .about-small{
     border-bottom: 1px solid #E8E8E8;

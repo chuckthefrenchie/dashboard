@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex mapComponent">
-    <div id="map" style="width: 722px; height: 80.5em"></div>
+    <div id="map" style="width: 880px; height: 80.5em"></div>
 
     <!-- <basemaps></basemaps> -->
   </div>
@@ -60,10 +60,10 @@ export default {
           .setHTML(`<h3>${feature.properties.title}</h3>`)
           .addTo(map);
 
-        console.log("marker was clicked on", feature);
+        console.log("marker was clicked on", feature.properties.title);
 
-        let pinDetails = feature.geometry.coordinates;
-        this.emitter.emit("pinDetailsOpened", pinDetails);
+        // let pinDetails = feature.geometry.coordinates;
+        this.emitter.emit("pinDetailsOpened", feature);
       });
     },
   },
